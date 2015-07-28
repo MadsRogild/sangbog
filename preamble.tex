@@ -1,0 +1,202 @@
+\documentclass[a4paper,12pt,final,twoside,openany,article]{memoir}%,oneside
+
+\settypeblocksize{0.85\paperheight}{0.9\paperwidth}{*}
+%One-sided
+%\setlrmargins{*}{*}{1}
+%Two-sided
+\setlrmargins{*}{*}{.66}
+
+\setulmargins{*}{*}{*}
+%\setheadfoot{\onelineskip}{0pt}
+\setheadfoot{0pt}{\onelineskip}
+\checkandfixthelayout
+
+%\OnehalfSpacing
+
+%\setsecnumdepth{subsection}
+%\chapterstyle{tandh}
+%\chapterstyle{section}
+%\renewcommand{\chaptitlefont}{\bfseries\Large}
+%\renewcommand{\chapnumfont}{\bfseries\Large}
+\chapterstyle{article}
+
+
+\usepackage[utf8x]{inputenc}
+\usepackage[danish, english]{babel}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{eucal}
+%\usepackage{subfigure}
+\usepackage[pdftex]{color, graphicx}
+\usepackage[final]{pdfpages}
+\usepackage[final]{hyperref}
+
+\usepackage{tabularx}
+\usepackage{multicol}
+\setlength{\vleftmargin}{0em}
+\setlength{\columnsep}{30pt}
+\usepackage[none]{hyphenat}
+
+
+\usepackage{tikz}
+\usepackage{todonotes}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{\thechapter\quad #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\renewcommand{\tocmark}{\markboth{\contentsname}{\contentsname}}
+\renewcommand{\bibmark}{\markboth{\bibname}{\bibname}}
+\renewcommand{\glossarymark}{\markboth{\glossaryname}{\glossaryname}}
+\renewcommand{\indexmark}{\markboth{\indexname}{\indexname}}
+
+%\makepagestyle{suneNormal}
+%\makeoddhead{suneNormal}{\scshape\rightmark}{}{\bfseries\thepage}
+%\makeevenhead{suneNormal}{\bfseries\thepage}{}{\scshape\rightmark}
+%\makeheadrule{suneNormal}{\textwidth}{\normalrulethickness}
+%\pagestyle{suneNormal}
+%\copypagestyle{suneChapter}{suneNormal}
+%\makeoddhead{suneChapter}{\scshape\leftmark}{}{\bfseries\thepage}
+%\makeevenhead{suneChapter}{\bfseries\thepage}{}{\scshape\leftmark}
+%\aliaspagestyle{chapter}{suneChapter}
+
+\makepagestyle{sangbog}
+\makeoddfoot{sangbog}{}{}{\large\bfseries\thepage}%\makeoddfoot{sangbog}{}{}{\large\thepage}
+\makeevenfoot{sangbog}{\large\bfseries\thepage}{}{}%\makeevenfoot{sangbog}{\large\thepage}{}{}
+\copypagestyle{sangbogGreek}{sangbog}
+\makeoddfoot{sangbogGreek}{}{}{\large\boldmath\pageAutoShift{\thepage}}%\makeoddfoot{sangbog}{}{}{\large\thepage}
+\makeevenfoot{sangbogGreek}{\large\boldmath\pageAutoShift{\thepage}}{}{}%\makeevenfoot{sangbog}{\large\thepage}{}{}
+
+\pagestyle{sangbogGreek}
+\aliaspagestyle{chapter}{empty}
+
+
+\makepagestyle{front}
+\makeoddfoot{front}{}{}{\large\bfseries Ungdommens Naturvidenskabelige Forening}
+\makeevenfoot{front}{}{}{\large\bfseries Ungdommens Naturvidenskabelige Forening}
+
+
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\frenchspacing
+
+%\makeindex
+%\makeglossary
+
+%How the glossary looks
+%\changeglossactual{+}
+%\changeglossnum{\thepage}
+\changeglossnumformat{|hyperpage}%% for hyperlinks
+
+%Ugly hack so \colon survives into the glossary
+%\renewcommand*{\begintheglossaryhook}{\newcommand{\colonn}{\colon}}
+
+\newbox\tempboxa
+\renewcommand{\glossitem}[4]{%
+\sbox\tempboxa{#1 \quad #2 #3 #4}%
+\par
+\ifdim\wd\tempboxa<0.8\linewidth
+#1 \quad #2 #3 \dotfill #4\relax
+\else
+\hangindent 2em
+#1 \dotfill #4\\
+#2 #3
+%#1 \dotfill #4\\
+%\parbox{\linewidth}{
+%\leftskip 2em\rightskip 1em
+%#2 #3
+%}
+\fi
+}
+
+
+
+
+% New commands
+\newcommand{\e}[0]{$\varepsilon$}
+\newcommand{\ph}[0]{$\varphi$}
+
+\newcommand{\Z}[0]{\mathbb Z}
+\newcommand{\N}[0]{\mathbb N}
+\newcommand{\R}[0]{\mathbb R}
+\newcommand{\Q}[0]{\mathbb Q}
+\newcommand{\C}[0]{\mathbb C}
+
+\newcommand{\lrepeat}{\ensuremath{\lVert : \,}}
+\newcommand{\rrepeat}{\ensuremath{\, : \rVert}}
+
+
+% TikZ for graphs and diagrams
+\usetikzlibrary{arrows,matrix}
+\tikzset{dot/.style={circle,fill=black,thick,inner sep=0pt,minimum size=1mm,draw}}
+\tikzset{arrow/.style={semithick,>=stealth',shorten >=1pt,shorten <=1pt}}
+%\tikzset{arrow/.style={semithick,>=to,shorten >=1pt,shorten <=1pt}}
+\tikzset{equal/.style={arrow,double distance=2pt}}
+
+%Enumerating with small roman integers as standard
+\renewcommand{\theenumi}{(\roman{enumi})}\renewcommand{\labelenumi}{\theenumi}
+
+\input{page_numbering}
+\newcommand{\standardpage}{\arabic{page}}
+\renewcommand{\thepage}{\standardpage}
+\newcommand{\standardpoem}{\arabic{poem}}
+\renewcommand{\thepoem}{\standardpoem}
+%\setcounter{page}{0}
+
+
+%Indikerer om Fulbert og Beatrice er passeret - så efterfølgende sidetal skal rykkes:
+\newif\ifFulbert
+
+\newcounter{value}
+%Til udskrivning af sidetal på de enkelte sider (afhængigt af Fulbert og Beatrice):
+\newcommand{\pageAutoShift}[1]{
+    \setcounter{value}{#1}
+    \ifFulbert
+        \addtocounter{value}{-1}
+    \fi
+    %{\boldmath\greek{value}}
+    {\boldmath\symcount{value}}
+}
+%Til udskrivning af sidetal i indeks (afhængigt af Fulbert og Beatrice):
+\newcommand{\pageNoShift}[1]{
+    \setcounter{value}{#1}
+    %{\boldmath\greek{value}}
+    {\boldmath\symcount{value}}
+}
+\newcommand{\pageWithShift}[1]{
+    \setcounter{value}{#1}
+    \addtocounter{value}{-1}
+    %{\boldmath\greek{value}}
+    {\boldmath\symcount{value}}
+}
+
+%Opretter sang i indeks - med korrekt sidetal (afhængigt af Fulbert og Beatrice).
+%Syntaksen er følgende: \autoIndex[<alfabetisering>]{<sangtitel>}
+\newcommand{\autoIndex}[2][]{
+\ifthenelse{\equal{#1}{}}
+{\autoIndexHelp{#2}{#2}}
+{\autoIndexHelp{#1}{#2}}
+}
+\newcommand{\autoIndexHelp}[2]{
+\ifFulbert
+\index{#1@\protect\flagverse{\thepoem}#2|pageWithShift}
+\else
+\index{#1@\protect\flagverse{\thepoem}#2|pageNoShift}
+\fi
+}
+\begin{comment}
+\newcommand{\autoIndex}[2][{#2}]{
+\ifFulbert
+\index{{#1}@\protect\flagverse{\thepoem}{#2}|pageWithShift}
+\else
+\index{{#1}@\protect\flagverse{\thepoem}{#2}|pageNoShift}
+\fi
+}
+\end{comment}
+
+
+
+%\xindyindex
+\makeindex
+%\makeglossary

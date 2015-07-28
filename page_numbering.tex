@@ -1,0 +1,66 @@
+\makeatletter
+\newcommand*{\greek}[1]{%
+  \expandafter\@greek\csname c@#1\endcsname
+}
+\newcommand*{\@greek}[1]{%
+  $\ifcase#1
+  \or\alpha\or\beta\or\gamma\or\delta\or\varepsilon
+  \or\zeta\or\eta\or\theta\or\iota\or\kappa\or\lambda
+  \or\mu\or\nu\or\xi\or o\or\pi\or\rho\or\sigma
+  \or\tau\or\upsilon\or\varphi\or\chi\or\psi\or\omega
+  \or\text{\bfseries \ae}\or\text{\bfseries \o}\or\text{\bfseries \aa}
+  \or\mathfrak a\or\mathfrak b\or\mathfrak c\or\mathfrak d\or\mathfrak e
+  \else\@ctrerr\fi$
+}
+\newcommand*{\Greek}[1]{%
+  \expandafter\@Greek\csname c@#1\endcsname
+}
+\newcommand*{\@Greek}[1]{%
+  \ifcase#1\or A\or B\or$\Gamma$\or$\Delta$\or E
+  \or Z\or H\or$\Theta$\or I\or K\or$\Lambda$
+  \or M\or N\or$\Xi$\or O\or$\Pi$\or P\or$\Sigma$
+  \or T\or Y\or$\Phi$\or X\or$\Psi$\or$\Omega$
+  \or$\mathfrak A$\or$\mathfrak B$\or$\mathfrak C$\or$\mathfrak D$
+  \or$\mathfrak E$\or$\mathfrak F$\or$\mathfrak G$\or$\mathfrak H$
+  \else\@ctrerr\fi
+}
+
+\newcommand*{\symcount}[1]{%
+  \expandafter\@symcount\csname c@#1\endcsname
+}
+\newcommand*{\@symcount}[1]{%
+  $\ifcase#1
+  1\or2\or3
+  \or 4\or 5\or6\or7\or 8\or 9 \or 11\or12\or13
+  \or 14\or15\or 16\or17
+  \or18
+  \or 19\or 20
+  \or 21\or 22
+  \or 23
+  \or24\or25\or 26\or 27
+  \or28\or29\or30
+  \or31\or32\or33\or34\or35\or36\or37\or38\or39\or40\or41\or42\or43\or44\or45\or46\or47\or48\or49\or50\or51\or52
+  \else\@ctrerr\fi$
+}
+
+\newcommand*{\intcount}[1]{%
+  \expandafter\@intcount\csname c@#1\endcsname
+}
+\newcommand*{\@intcount}[1]{%
+  $\ifcase#1
+  1\or2\or3
+  \or 4\or 5\or6\or7\or 8\or 9
+  \or10 \or 11\or12\or13
+  \or 14\or15\or 16\or17
+  \or18
+  \or 19\or 20
+  \or 21\or 22
+  \or 23
+  \or24\or25\or 26\or 27
+  \or28\or29\or30
+  \or31\or32\or33\or34\or35\or36\or37\or38\or39\or40\or41\or42\or43\or44\or45\or46\or47\or48\or49\or50\or51\or52
+  \else\@ctrerr\fi$
+}
+
+\makeatother
+
